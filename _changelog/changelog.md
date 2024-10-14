@@ -3,6 +3,7 @@
 ### 14/10/2024
 * Home pagina toegevoegd
 * Home controller toegevoegd
+* Components toegevoegd
 
 ### 09/10/2024
 * Project aangemaakt
