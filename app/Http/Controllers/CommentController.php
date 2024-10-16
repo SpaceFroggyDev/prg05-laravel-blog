@@ -20,7 +20,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        return view('articles.show');
     }
 
     /**
@@ -28,7 +28,14 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comment = new Comment();
+
+        $comment->comment = $request->input('comment');
+        $comment->user_id = auth()->user()->id;
+
+        $comment->save();
+
+        return redirect()->route('articles.index');
     }
 
     /**

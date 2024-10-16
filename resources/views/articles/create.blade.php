@@ -4,23 +4,23 @@
         <div>
 {{--            <label for="title">Title</label>--}}
 {{--            <input type="text" id="title" name="title"/>--}}
-            <x-input-label title="title">Title</x-input-label>
-            <x-text-input id="title" name="title"></x-text-input>
+            <x-input-label title="title" class="form-label">Title</x-input-label>
+            <x-text-input id="title" name="title" class="form-control"></x-text-input>
         </div>
         <div>
-            <label for="text">Text</label>
-            <textarea id="text" name="text" cols="30" rows="10"></textarea>
+            <label for="text" class="form-label">Text</label>
+            <textarea id="text" name="text" cols="30" rows="10" class="form-control"></textarea>
         </div>
         <div>
-            <x-input-label title="image">Image</x-input-label>
-            <x-text-input id="image" name="image"></x-text-input>
+            <x-input-label title="image" class="form-label">Image</x-input-label>
+            <x-text-input id="image" name="image" class="form-control"></x-text-input>
         </div>
         <div>
-            <x-input-label title="category">Category</x-input-label>
-            <x-text-input id="category" name="category"></x-text-input>
+            <x-input-label title="category" class="form-label">Category</x-input-label>
+            <x-text-input id="category" name="category" class="form-control"></x-text-input>
         </div>
         <div>
-            <button type="submit">Submit</button>
+            <button type="submit" class="btn btn-dark">Submit</button>
         </div>
     </form>
 </x-layout>
