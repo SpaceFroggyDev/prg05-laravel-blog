@@ -1,5 +1,7 @@
 <x-layout title="{{$article->title}}">
     <h3>{{$article->title}}</h3>
+{{--    <img src="{{$article->image}}" alt="article image">--}}
+    <p>{{$article->text}}</p>
 
     <form action="{{ route('articles.destroy', $article) }}" method="post">
         @csrf

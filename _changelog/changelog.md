@@ -1,5 +1,9 @@
 # Changelog
 
+### 21/10/2024
+* authenticatie toegevoegd
+* CSS aangepast
+
 ### 16/10/2024
 * Delete functie toegevoegd
 * Article create pagina toegevoegd

@@ -5,16 +5,22 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title }}</title>
-    {{-- BOOTSTRAP --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    {{-- CSS --}}
+    @vite(["resources/css/style.css"])
 </head>
 <body>
     <nav class="navbar bg-dark border-bottom border-body">
-        <x-navlink class="nav-link" href="/" :active="request()->is('home')">Home</x-navlink>
-        <x-navlink class="nav-link" href="{{ route('articles.index') }}" :active="request()->is('articles.index')">Articles</x-navlink>
-        <x-navlink class="nav-link" href="/dashboard" :active="request()->is('dashboard')">Dashboard</x-navlink>
+        <x-navlink href="/" :active="request()->is('home')">Home</x-navlink>
+        <x-navlink href="{{ route('articles.index') }}" :active="request()->is('articles.index')">Articles</x-navlink>
+        <x-navlink href="{{ route('articles.create') }}" :active="request()->is('articles.index')">Post</x-navlink>
+        <x-navlink href="/dashboard" :active="request()->is('dashboard')">Dashboard</x-navlink>
+        <x-navlink href="/login" :active="request()->is('log in')">Log In</x-navlink>
     </nav>
-    {{ $slot }}
+    <main>
+        {{ $slot }}
+    </main>
+    <footer>
+        <x-navlink href="/logout">Log Out</x-navlink>
+    </footer>
 </body>
 </html>

@@ -12,7 +12,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        return view('comments.index');
     }
 
     /**
@@ -32,7 +32,7 @@ class CommentController extends Controller
 
         $comment->comment = $request->input('comment');
         $comment->user_id = auth()->user()->id;
-
+        $comment->article_id = auth()->article()->id;
         $comment->save();
 
         return redirect()->route('articles.index');

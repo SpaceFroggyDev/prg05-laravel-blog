@@ -34,6 +34,14 @@ class ArticleController extends Controller
      */
     public function store(Request $request) // POST
     {
+        $request->validate([
+            'title' => 'required',
+            'text' => 'required',
+            'category' => 'required',
+        ], [
+            'title.required' => 'Add a title!',
+        ]);
+
         $article = new Article();
 
         $article->title = $request->input('title');
