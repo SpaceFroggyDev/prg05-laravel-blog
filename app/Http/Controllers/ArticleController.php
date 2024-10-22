@@ -71,7 +71,25 @@ class ArticleController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'text' => 'required',
+            'category' => 'required',
+        ], [
+            'title.required' => 'Add a title!',
+        ]);
+
+        $article = $article->$id;
+
+        $article->title = $request->input('title');
+        $article->text = $request->input('text');
+        $article->image = $request->input('image');
+        $article->category = $request->input('category');
+        $article->user_id = auth()->user()->id;
+
+        $article->save();
+
+        return redirect()->route('articles.index');
     }
 
     /**

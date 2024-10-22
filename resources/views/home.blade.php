@@ -1,4 +1,6 @@
 <x-layout title="Home">
-    <h1>Welcome to the home page</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur atque debitis dicta dolorum, eius et eum eveniet, impedit molestias nostrum numquam, obcaecati perferendis quae ullam vitae. Aliquam excepturi obcaecati quas.</p>
+    <h1>Welcome to Cosplay and Craft Community!</h1>
+    <section id="home">
+        <p>The forum for all creative souls looking for tips and tricks for all kinds of crafts!</p>
+    </section>
 </x-layout>

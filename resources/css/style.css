@@ -5,13 +5,18 @@
 /* #F7EED3 */
 /* #AAB396 */
 /* #674636 */
+/* https://colorhunt.co/palette/fff8e8f7eed3aab396674636 */
 
-p, a, h1, h2, h3, h4, h5, label, button {
+p, a, h1, h2, h3, h4, h5, label, button, span {
     font-family: "Lexend", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
     color: #674636;
     transition: ease-in-out 0.15s;
+}
+
+h1 {
+    text-align: center;
 }
 
 body {
@@ -78,4 +83,60 @@ footer {
 
 footer a {
     text-decoration: none;
+}
+
+input {
+    height: 2vw;
+    border: 1px solid #AAB396;
+    border-radius: 1vh;
+}
+
+textarea {
+    border: 1px solid #AAB396;
+    border-radius: 1vh;
+}
+
+form div {
+    padding: 0.5vw;
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    padding-bottom: 1vh;
+}
+
+form .button {
+    margin: 1vw 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20vw;
+}
+
+#details {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20vw;
+}
+
+#home {
+    padding: 0 20vw;
+}
+
+#home p {
+    text-align: center;
+}
+
+#comments {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+#comments span {
+    color: #AAB396;
 }

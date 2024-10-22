@@ -1,4 +1,5 @@
 <x-layout title="Create">
+    <h1>New Post</h1>
     <form action="{{ route('articles.store') }}" method="post">
         @csrf
         <div>
@@ -12,13 +13,13 @@
         </div>
         <div>
             <label for="text" class="form-label">Text</label>
-            <textarea id="text" name="text" cols="30" rows="10" class="form-control" value="{{ old('text') }}"></textarea>
+            <textarea id="text" name="text" cols="30" rows="15" class="form-control" value="{{ old('text') }}"></textarea>
             @error('text')
             <span>{{ $message }}</span>
             @enderror
         </div>
         <div>
-            <x-input-label title="image" class="form-label">Image</x-input-label>
+            <x-input-label title="image" class="form-label">Image URL</x-input-label>
             <x-text-input id="image" name="image" class="form-control" value="{{ old('image') }}"></x-text-input>
         </div>
         <div>
@@ -29,7 +30,7 @@
             @enderror
         </div>
         <div>
-            <button type="submit" class="btn btn-dark">Submit</button>
+            <button type="submit" class="button">Submit</button>
         </div>
     </form>
 </x-layout>

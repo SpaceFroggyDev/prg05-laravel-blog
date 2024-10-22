@@ -1,5 +1,10 @@
 # Changelog
 
+### 22/10/2024
+* Begin Edit pagina
+* Comments geupdate (werkt nog steeds niet)
+* Heel veel CSS geupdate
+
 ### 21/10/2024
 * authenticatie toegevoegd
 * CSS aangepast

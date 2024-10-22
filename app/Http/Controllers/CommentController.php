@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
@@ -32,9 +33,8 @@ class CommentController extends Controller
 
         $comment->comment = $request->input('comment');
         $comment->user_id = auth()->user()->id;
-        $comment->article_id = auth()->article()->id;
+        $comment->article_id = Article::find($id);
         $comment->save();
-
         return redirect()->route('articles.index');
     }
 
@@ -68,5 +68,10 @@ class CommentController extends Controller
     public function destroy(Comment $comment)
     {
         //
+    }
+
+    public function article()
+    {
+        return $this->belongsTo(Article::class);
     }
 }

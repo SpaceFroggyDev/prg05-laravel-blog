@@ -20,7 +20,8 @@
         {{ $slot }}
     </main>
     <footer>
-        <x-navlink href="/logout">Log Out</x-navlink>
+{{--        <x-navlink href="/logout">Log Out</x-navlink>--}}
+        <p>Made by Alex Dusselaar - 2024</p>
     </footer>
 </body>
 </html>
