@@ -7,7 +7,7 @@
 /* #674636 */
 /* https://colorhunt.co/palette/fff8e8f7eed3aab396674636 */
 
-p, a, h1, h2, h3, h4, h5, label, button, span {
+p, a, h1, h2, h3, h4, h5, label, button, span, .button, textarea, input {
     font-family: "Lexend", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -76,6 +76,10 @@ article {
     justify-content: center;
 }
 
+.button:hover {
+    background-color: #453229
+}
+
 footer {
     background-color: #AAB396;
     padding: 5vh;
@@ -108,6 +112,8 @@ form label {
 
 form .button {
     margin: 1vw 0;
+    padding: 1vw;
+    border: none;
 }
 
 form {
@@ -139,4 +145,60 @@ form {
 
 #comments span {
     color: #AAB396;
+}
+
+#articles article div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.author {
+    margin: 0;
+    font-size: 0.7rem;
+}
+
+.category {
+    font-size: 0.7rem;
+    background-color: #AAB396;
+    padding: 1vh;
+    border-radius: 1vh;
+}
+
+#details div {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+    margin-bottom: 2vh;
+}
+
+#details img {
+    height: 70vh;
+    object-fit: contain;
+}
+
+#comments div {
+    background-color: #AAB396;
+    padding: 1vh;
+    border-radius: 1vh;
+    width: 50vw;
+    margin: 1vh;
+}
+
+.article-actions {
+    display: flex;
+    align-items: center;
+    padding: 0 20vw;
+    justify-content: space-evenly;
+}
+
+.article-actions form {
+    padding: 0;
+}
+
+.article-actions form .button {
+    margin: 0;
+}
+
+.article-actions .button {
+    padding: 1vh 12vw;
 }

@@ -27,13 +27,13 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Article $article)
     {
         $comment = new Comment();
 
         $comment->comment = $request->input('comment');
         $comment->user_id = auth()->user()->id;
-        $comment->article_id = Article::find($id);
+        $comment->article_id = $article->id;
         $comment->save();
         return redirect()->route('articles.index');
     }

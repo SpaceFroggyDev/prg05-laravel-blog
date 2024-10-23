@@ -13,6 +13,7 @@ Route::get('/welcome', function () {
 Route::get('/',[HomeController::class, 'index']);
 Route::resource('articles', ArticleController::class);
 Route::resource('comments', CommentController::class);
+Route::post('comments/{article}', [CommentController::class, 'store'])->name('comments.store');
 Route::delete('articles/{article}', [ArticleController::class, 'destroy'])->name('articles.destroy');
 
 Route::get('/dashboard', function () {

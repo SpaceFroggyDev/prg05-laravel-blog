@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ArticleController extends Controller
 {
@@ -26,7 +28,8 @@ class ArticleController extends Controller
      */
     public function create() // GET
     {
-        return view('articles.create');
+        $categories = Category::all();
+        return view('articles.create', compact('categories'));
     }
 
     /**
@@ -37,7 +40,6 @@ class ArticleController extends Controller
         $request->validate([
             'title' => 'required',
             'text' => 'required',
-            'category' => 'required',
         ], [
             'title.required' => 'Add a title!',
         ]);
@@ -47,7 +49,7 @@ class ArticleController extends Controller
         $article->title = $request->input('title');
         $article->text = $request->input('text');
         $article->image = $request->input('image');
-        $article->category = $request->input('category');
+        $article->category_id = $request->input('category_id');
         $article->user_id = auth()->user()->id;
 
         $article->save();
@@ -69,35 +71,35 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+
+    public function edit(Article $article)
     {
-        $request->validate([
-            'title' => 'required',
-            'text' => 'required',
-            'category' => 'required',
-        ], [
-            'title.required' => 'Add a title!',
-        ]);
-
-        $article = $article->$id;
-
-        $article->title = $request->input('title');
-        $article->text = $request->input('text');
-        $article->image = $request->input('image');
-        $article->category = $request->input('category');
-        $article->user_id = auth()->user()->id;
-
-        $article->save();
-
-        return redirect()->route('articles.index');
+//        Gate::authorize('update', $article);
+        $categories = Category::all();
+        return view('articles.edit', compact('article', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Article $article)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'text' => 'required|string|max:2000',
+        ], [
+            'title.required' => 'Add a title!',
+        ]);
+
+        $article->title = $request->input('title');
+        $article->text = $request->input('text');
+        $article->image = $request->input('image');
+        $article->category_id = $request->input('category');
+        $article->user_id = auth()->user()->id;
+
+        $article->update();
+
+        return redirect()->route('articles.index');
     }
 
     /**

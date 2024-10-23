@@ -1,12 +1,18 @@
 # Changelog
 
+### 23/10/2024
+* Kleine CSS aanpassingen
+* Comments werken
+* Edit pagina werkt (submit en edit nog niet)
+
 ### 22/10/2024
 * Begin Edit pagina
 * Comments geupdate (werkt nog steeds niet)
 * Heel veel CSS geupdate
+* Categories toegevoegd
 
 ### 21/10/2024
-* authenticatie toegevoegd
+* authenticatie toegevoegd (alleen de user die de article heeft aangemaakt kan deze verwijderen)
 * CSS aangepast
 
 ### 16/10/2024
