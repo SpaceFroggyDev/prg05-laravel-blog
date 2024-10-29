@@ -37,7 +37,6 @@ class ArticlePolicy
      */
     public function update(User $user, Article $article): bool
     {
-        //
         return $article->user()->is($user);
     }
 

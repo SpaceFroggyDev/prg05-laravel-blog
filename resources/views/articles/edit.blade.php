@@ -1,5 +1,9 @@
 <x-layout title="Create">
 
+    @if (!$article->user->is(auth()->user()))
+
+    @endif
+
     <h1>Edit Post</h1>
     <form action="{{ route('articles.update', $article->id) }}" method="post">
         @csrf

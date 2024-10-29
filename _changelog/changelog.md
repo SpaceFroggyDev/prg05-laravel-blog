@@ -2,6 +2,7 @@
 
 ### 29/10/2024
 * Edit bug opgelost, editen werkt nu volledig
+* Edit autorisation via ArticlePolicy, alleen de persoon die de article heeft aangemaakt kan hem editen.
 
 ### 23/10/2024
 * Kleine CSS aanpassingen

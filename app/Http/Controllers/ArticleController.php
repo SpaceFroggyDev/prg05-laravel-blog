@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -67,9 +68,9 @@ class ArticleController extends Controller
      * Show the form for editing the specified resource.
      */
 
-    public function edit(Article $article)
+    public function edit(Article $article): RedirectResponse
     {
-//        Gate::authorize('update', $article);
+        Gate::authorize('update', $article);
         $categories = Category::all();
         return view('articles.edit', compact('article', 'categories'));
     }
@@ -77,8 +78,9 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request, Article $article): RedirectResponse
     {
+        Gate::authorize('update', $article);
         $request->validate([
             'title' => 'required|string|max:255',
             'text' => 'required|string|max:2000',
