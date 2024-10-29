@@ -14,11 +14,6 @@ class ArticleController extends Controller
      */
     public function index()
     {
-//        $article = new Article();
-//        $article->title = 'Random Article';
-//        $article->category = 1050;
-
-//        return view('articles.index');
         $articles = Article::all();
         return view('articles.index', ['articles' => $articles]);
     }
@@ -94,7 +89,7 @@ class ArticleController extends Controller
         $article->title = $request->input('title');
         $article->text = $request->input('text');
         $article->image = $request->input('image');
-        $article->category_id = $request->input('category');
+        $article->category_id = $request->input('category_id');
         $article->user_id = auth()->user()->id;
 
         $article->update();

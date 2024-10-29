@@ -1,9 +1,12 @@
 # Changelog
 
+### 29/10/2024
+* Edit bug opgelost, editen werkt nu volledig
+
 ### 23/10/2024
 * Kleine CSS aanpassingen
 * Comments werken
-* Edit pagina werkt (submit en edit nog niet)
+* Edit pagina werkt (submit nog niet)
 
 ### 22/10/2024
 * Begin Edit pagina
