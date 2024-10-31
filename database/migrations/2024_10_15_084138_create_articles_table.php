@@ -18,6 +18,7 @@ return new class extends Migration
             $table->longText('text');
             $table->string('image')->nullable();
             $table->foreignId('category_id')->constrained('categories');
+            $table->boolean('published')->default(true);
             $table->timestamps();
         });
     }

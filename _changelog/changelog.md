@@ -1,5 +1,8 @@
 # Changelog
 
+### 31/10/2024
+* admin role en article toggle voor admins toegevoegd aan migration
+
 ### 29/10/2024
 * Edit bug opgelost, editen werkt nu volledig
 * Edit autorisation via ArticlePolicy, alleen de persoon die de article heeft aangemaakt kan hem editen.
