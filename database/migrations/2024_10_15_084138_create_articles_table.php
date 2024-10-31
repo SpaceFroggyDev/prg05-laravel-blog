@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->longText('text');
             $table->string('image')->nullable();
+            //$table->boolean('published')->default(true);
             $table->foreignId('category_id')->constrained('categories');
             $table->timestamps();
         });
