@@ -29,7 +29,7 @@ class ArticlePolicy
      */
     public function create(User $user): bool
     {
-        //
+        //return $user->can('create', Article::class);
     }
 
     /**
@@ -37,7 +37,11 @@ class ArticlePolicy
      */
     public function update(User $user, Article $article): bool
     {
-        return $article->user()->is($user);
+        if (!auth()->user()->is_admin) {
+            return $article->user()->is($user);
+        } else {
+            return auth()->user()->is_admin;
+        }
     }
 
     /**

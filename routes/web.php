@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
@@ -15,6 +16,8 @@ Route::resource('articles', ArticleController::class);
 Route::resource('comments', CommentController::class);
 Route::post('comments/{article}', [CommentController::class, 'store'])->name('comments.store');
 Route::delete('articles/{article}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+
+Route::resource('/admin', AdminController::class)->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

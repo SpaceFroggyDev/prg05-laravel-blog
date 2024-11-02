@@ -1,8 +1,14 @@
 # Changelog
 
+### 02/11/2024
+* Admin dashboard added
+* Admins can now delete articles
+* Logo added for fun :)
+* Some additional css added
+
 ### 31/10/2024
-* admin role en article toggle voor admins toegevoegd aan database
-* articles.index laat alleen articles zien waar published = true
+* Admin role en article toggle voor admins toegevoegd aan database
+* Articles.index laat alleen articles zien waar published = true
 
 ### 29/10/2024
 * Edit bug opgelost, editen werkt nu volledig

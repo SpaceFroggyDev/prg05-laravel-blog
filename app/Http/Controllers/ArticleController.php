@@ -13,9 +13,15 @@ class ArticleController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $articles = Article::where('published', '=', 1)->get();
+        $articles = Article::where('published', '=', 1)->orderBy('created_at', 'desc')->get();
+
+        if(request()->has('search')) {
+            $articles = $articles->where('title', 'like', '%' . $request->input('search') . '%');
+            //$articles = $articles->where('title', 'like', '%' . request('search') . '%');
+        }
+
         return view('articles.index', ['articles' => $articles]);
     }
 
@@ -104,7 +110,13 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
+        Gate::authorize('delete', $article);
         $article->delete();
+
+        if (auth()->user()->is_admin) {
+            return redirect()->route('admin.index');
+        }
         return redirect()->route('articles.index');
     }
+
 }
