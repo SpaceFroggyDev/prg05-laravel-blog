@@ -57,8 +57,25 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Admin $admin)
+    public function update( Article $article)
     {
-        //
+
+    }
+
+    public function toggle( Article $article)
+    {
+        $article->published = !$article->published;
+        $article->save();
+
+        return redirect()->route('admin.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Article $article)
+    {
+        $article->delete();
+        return redirect()->route('admin.index');
     }
 }

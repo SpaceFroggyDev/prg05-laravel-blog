@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Comment;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -16,13 +17,28 @@ class ArticleController extends Controller
     public function index(Request $request)
     {
         $articles = Article::where('published', '=', 1)->orderBy('created_at', 'desc')->get();
+        $categories = Category::all();
 
         if(request()->has('search')) {
-            $articles = $articles->where('title', 'like', '%' . $request->input('search') . '%');
-            //$articles = $articles->where('title', 'like', '%' . request('search') . '%');
+            $search = $request->search;
+
+            $articles = Article::where(function ($query) use ($search) {
+                $query->where('title', 'LIKE', '%' . $search . '%')
+                ->orwhere('text', 'LIKE', '%' . $search . '%');
+                })
+                ->orwhereHas('user', function ($query) use ($search) {
+                    $query->where('name', 'LIKE', '%' . $search . '%');
+                })
+                ->get();
+
+            return view('articles.index', compact('articles', 'search'));
         }
 
-        return view('articles.index', ['articles' => $articles]);
+        if($request->input('filter') != null) {
+            $articles = Article::where('category_id', $request->input('filter'))->where('published', '=', 1)->get();
+        }
+
+        return view('articles.index', compact('articles', 'categories'));
     }
 
     /**
@@ -30,8 +46,13 @@ class ArticleController extends Controller
      */
     public function create() // GET
     {
-        $categories = Category::all();
-        return view('articles.create', compact('categories'));
+        $count = Comment::where('user_id', \Auth::id())->count();
+        if ($count >= 3) {
+            $categories = Category::all();
+            return view('articles.create', compact('categories'));
+        } else {
+            return redirect()->route('articles.index');
+        }
     }
 
     /**
@@ -74,7 +95,7 @@ class ArticleController extends Controller
      * Show the form for editing the specified resource.
      */
 
-    public function edit(Article $article): RedirectResponse
+    public function edit(Article $article)
     {
         Gate::authorize('update', $article);
         $categories = Category::all();

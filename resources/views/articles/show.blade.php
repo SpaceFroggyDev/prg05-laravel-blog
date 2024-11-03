@@ -20,16 +20,18 @@
         @endforeach
     </section>
 
-    @if ($article->user->is(auth()->user()))
-        <div class="article-actions">
-            <form action="{{ route('articles.destroy', $article) }}" method="post">
-                @csrf
-                @method('DELETE')
-                <input type="submit" value="Delete" class="button"/>
-            </form>
-            <a href="{{ route('articles.edit', $article->id) }}" class="button">Edit</a>
-        </div>
-    @endif
+    @isset(auth()->user()->is_admin)
+        @if ($article->user->is(auth()->user()) or auth()->user()->is_admin)
+            <div class="article-actions">
+                <form action="{{ route('articles.destroy', $article) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <input type="submit" value="Delete" class="button"/>
+                </form>
+                <a href="{{ route('articles.edit', $article->id) }}" class="button">Edit</a>
+            </div>
+        @endif
+    @endisset
 
     <form action="{{ route('comments.store', $article->id) }}" method="post">
         @csrf

@@ -8,7 +8,7 @@
             <td>User</td>
             <td>Created at</td>
             <td>State</td>
-            <td>#</td>
+            <td></td>
         </tr>
         </thead>
         <tbody>
@@ -18,14 +18,25 @@
                     <td>{{ $article->title }}</td>
                     <td>{{ $article->user->name }}</td>
                     <td>{{ $article->created_at->toDateString() }}</td>
-                    <td>{{ $article->published }}</td>
+                    <td>
+                        <form action="{{ route('admin.toggle', $article->id) }}" method="post">
+                            @csrf
+                            <button type="submit" id="published" class="button">
+                                @if($article->published)
+                                    Published
+                                @else
+                                    Not Published
+                                @endif
+                            </button>
+                        </form>
+                    </td>
                     <td>
                             <form action="{{ route('articles.destroy', $article) }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <input type="submit" value="Delete" class="button"/>
+                                <button type="submit" class="button">Delete</button>
                             </form>
-                            <a href="{{ route('articles.edit', $article->id) }}" class="button">Edit</a>
+{{--                            <a href="{{ route('articles.edit', $article->id) }}" class="button">Edit</a>--}}
                     </td>
                 </tr>
             @endforeach

@@ -1,5 +1,10 @@
 # Changelog
 
+### 03/11/2024
+* Diepere validatie toegevoegd (Je moet drie comments plaatsen voordat je een article kan maken)
+* Article toggle voor admins toegevoegd
+* Filter op basis van category toegevoegd
+
 ### 02/11/2024
 * Admin dashboard added
 * Admins can now delete articles
