@@ -31,7 +31,7 @@ class ArticleController extends Controller
                 })
                 ->get();
 
-            return view('articles.index', compact('articles', 'search'));
+            return view('articles.index', compact('articles', 'search', 'categories'));
         }
 
         if($request->input('filter') != null) {
